@@ -1,4 +1,4 @@
-Feature: Feature name
+Feature: Buscar productos en Mercado Libre
 
   Scenario: Buscar un producto por el buscador de Mercado Libre
     Given Usuario abre la web de mercado Libre

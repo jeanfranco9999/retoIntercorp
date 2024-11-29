@@ -2,7 +2,7 @@
 
 Este proyecto tiene como objetivo la automatización de pruebas funcionales para la página web de Mercado Libre utilizando el framework **Cypress** y el patrón de diseño **Page Object Model (POM)**. Los escenarios de prueba están escritos en **Gherkin** y se enlazan con el código JavaScript a través de **Cucumber**.
 
-
+**Los casos de prueba se encuentran en la ruta cypress/e2e/Features**
 ## Casos de Prueba Ejemplificados
 
 ### Feature: Buscar un Producto en Mercado Libre
@@ -13,10 +13,11 @@ Este proyecto tiene como objetivo la automatización de pruebas funcionales para
 Se verifica que al ingresar "zapatillas puma" en el buscador, se muestren los productos relacionados.
 
 **Implementación:**
-* **Flujo:**
-  1. El usuario abre la página principal de Mercado Libre.
-  2. Ingresa "zapatillas puma" en el campo de búsqueda.
-  3. Se valida que los resultados de la búsqueda correspondan a productos de la marca Puma.
+```Gherkin
+    Given Usuario abre la web de mercado Libre
+    When Usuario ingresa el producto "zapatillas puma" en el buscador
+    Then Usuario visualiza todas las zapatillas marca puma
+```
 
   **Evidencia de la ejecución**
 
@@ -30,10 +31,11 @@ Se verifica que al ingresar "zapatillas puma" en el buscador, se muestren los pr
 Se verifica que al ingresar una cadena con caracteres especiales, se muestre un mensaje indicando que no hay resultados.
 
 **Implementación:**
-* **Flujo:**
-  1. El usuario abre la página principal de Mercado Libre.
-  2. Ingresa una cadena con caracteres especiales (e.g., "$$%%&&") en el campo de búsqueda.
-  3. Se valida que se muestre un mensaje de "No se encontraron resultados".
+```Gherkin
+Given Usuario abre la web de mercado Libre
+    When Usuario ingresa el producto "$$%%&&" en el buscador
+    Then Usuario visualiza mensaje que no hay productos relacionados a la busqueda
+```
 
 **Evidencia de la ejecución**
 
@@ -45,6 +47,7 @@ Se verifica que al ingresar una cadena con caracteres especiales, se muestre un 
 - Visual Studio Code
 - Cypress
 - Google Chrome
+- NodeJs
 ## Estructura del Proyecto
 
 El proyecto está organizado en tres carpetas principales:
@@ -64,7 +67,7 @@ El proyecto está organizado en tres carpetas principales:
 3. **Step-Definitions**
    - En esta carpeta se encuentran los pasos de prueba escritos en **JavaScript** que hacen match con los pasos definidos en los escenarios de Gherkin. Esta capa es responsable de la implementación de la lógica para cada paso de los escenarios.
    - Ejemplo:
-     - `MercadoLibreStep.js`
+     - `BuscarProductoStep.js`
 
 ## Flujo de Trabajo para Ejecutar el Proyecto
 
@@ -88,5 +91,5 @@ El proyecto está organizado en tres carpetas principales:
    1. Escoger la opcion 'E2E Testing'
    2. Escoger el navegador de tu preferencia, recomendable usar Google Chrome
    3. Hacer Click en el boton 'Start E2E Testing in Chrome'
-   4. Hacer click al archivo MercadoLibre.feature
+   4. Hacer click al archivo buscarProducto.feature
    5. Se ejecutaran los casos automaticamente
